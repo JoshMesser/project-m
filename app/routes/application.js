@@ -7,18 +7,19 @@ const {
 
 export default Ember.Route.extend({
   session: service(),
-  audio: service(),
+  // audio: service(),
 
+  beforeModel() {
+    return this.get('session').fetch().catch(() => {});
+  },
+
+  /*
   initAudioFile: on('init', function() {
     const audio = this.get('audio');
 
     audio.load('/sounds/19. Character Select.mp3').asSound('background-track');
     audio.load('/sounds/Announcer - Title (USA).wav').asSound('startup-music');
   }),
-
-  beforeModel() {
-    return this.get('session').fetch().catch(() => {});
-  },
 
   afterModel() {
     const audio = this.get('audio');
@@ -35,6 +36,7 @@ export default Ember.Route.extend({
       }
     }, 5000);
   },
+  */
 
   actions: {
 

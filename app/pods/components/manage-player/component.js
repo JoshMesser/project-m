@@ -9,7 +9,7 @@ const {
 
 export default Ember.Component.extend({
   smash: service(),
-  audio: service(),
+  // audio: service(),
 
   classNames: ['manage-player'],
 
@@ -17,6 +17,7 @@ export default Ember.Component.extend({
 
   teamColors: ['None', 'Red', 'Blue', 'Green'],
 
+  /*
   initSounds: on('init', function() {
     const audio = this.get('audio');
     const characters = this.get('characters');
@@ -53,6 +54,7 @@ export default Ember.Component.extend({
       found.play();
     }
   }),
+  */
 
   actions: {
     rollback( player ) {
