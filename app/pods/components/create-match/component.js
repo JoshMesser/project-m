@@ -12,6 +12,21 @@ export default Ember.Component.extend({
   smash: service(),
   stages: computed.alias('smash.stages'),
 
+  stageFilter: '',
+  filteredStages: computed('stages.@each', 'stageFilter', function() {
+    const filter = this.get('stageFilter');
+    const stages = this.get('stages');
+
+    if ( filter ) {
+      return stages.filter(stage => {
+        const reg = new RegExp(filter, 'gi');
+        return reg.test( stage.label );
+      });
+    }
+
+    return stages;
+  }),
+
   match: {
     type: '',
     coop: '',

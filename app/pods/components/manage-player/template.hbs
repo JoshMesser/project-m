@@ -32,8 +32,11 @@
           {{/paper-radio-group}}
 
           <h4>Character</h4>
+
+          {{form.input type="text" label="Character Filter" value=characterFilter onChange=(action (mut characterFilter))}}
+
           {{#paper-radio-group class="character-select" groupValue=(readonly player.character) onChange=(action (mut player.character)) as |group|}}
-            {{#each characters as |char|}}
+            {{#each (sort-by 'name' filteredCharacters) as |char|}}
               {{#group.radio value=char.name}}
                 <img src="{{char.image}}" />
                 <div>{{char.name}}</div>

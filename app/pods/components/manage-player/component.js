@@ -13,6 +13,21 @@ export default Ember.Component.extend({
 
   characters: computed.alias('smash.characters'),
 
+  characterFilter: '',
+  filteredCharacters: computed('characters.@each', 'characterFilter', function() {
+    const filter = this.get('characterFilter');
+    const characters = this.get('characters');
+
+    if ( filter ) {
+      return characters.filter(char => {
+        const reg = new RegExp(filter, 'gi');
+        return reg.test( char.name );
+      });
+    }
+
+    return characters;
+  }),
+
   teamColors: ['None', 'Red', 'Blue', 'Green'],
 
   /*

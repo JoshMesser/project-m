@@ -45,8 +45,11 @@
 
             {{!-- Stage Selection --}}
             <label>Match Stage</label>
+
+            {{form.input type="text" label="Stage Filter" value=stageFilter onChange=(action (mut stageFilter))}}
+
             {{#paper-radio-group groupValue=(readonly match.stage) onChange=(action (mut match.stage)) as |group|}}
-              {{#each stages as |stage|}}
+              {{#each (sort-by 'label' filteredStages) as |stage|}}
                 {{#group.radio value=stage.label}}
                   {{stage.label}}
                 {{/group.radio}}
