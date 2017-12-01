@@ -1,6 +1,6 @@
-# smash-bros
+# Project M
 
-## Super Smash Bros N64 Record keeping application
+## Project M Record keeping application
 
 This README outlines the details of collaborating on this project.
 
@@ -19,7 +19,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd smash-bros`
+* `cd project-m`
 * `npm install` or `yarn`
 
 ## Running / Development

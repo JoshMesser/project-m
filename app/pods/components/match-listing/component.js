@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import utilities from 'smash-bros/utilities';
+import utilities from 'project-m/utilities';
 
 const {
   outputDate

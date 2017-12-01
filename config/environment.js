@@ -3,8 +3,8 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'smash-bros',
-    podModulePrefix: 'smash-bros/pods',
+    modulePrefix: 'project-m',
+    podModulePrefix: 'project-m/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -25,12 +25,12 @@ module.exports = function(environment) {
     },
 
     firebase: {
-      apiKey: "AIzaSyAaRvEXo05wJvVSNNIdlPyYgVXAd3MPEMw",
-      authDomain: "smash-bros-b8bd7.firebaseapp.com",
-      databaseURL: "https://smash-bros-b8bd7.firebaseio.com",
-      projectId: "smash-bros-b8bd7",
-      storageBucket: "smash-bros-b8bd7.appspot.com",
-      messagingSenderId: "792509984208"
+      apiKey: "AIzaSyCrNHjzAO1ecEZ_ui4pdC9RC10mdI29LgE",
+      authDomain: "project-m-df297.firebaseapp.com",
+      databaseURL: "https://project-m-df297.firebaseio.com",
+      projectId: "project-m-df297",
+      storageBucket: "project-m-df297.appspot.com",
+      messagingSenderId: "50959256081"
     },
 
     torii: {
