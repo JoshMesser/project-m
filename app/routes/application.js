@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 const {
-  inject: { service },
-  on,
+  inject: { service }
 } = Ember;
 
 export default Ember.Route.extend({
