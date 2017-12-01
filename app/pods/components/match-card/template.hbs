@@ -1,0 +1,82 @@
+{{#paper-card as |card|}}
+	{{#card.title as |title|}}
+		{{#title.text as |text|}}
+			{{#text.headline}}
+				{{match.type}} {{match.coop}}
+			{{/text.headline}}
+			{{#text.subhead}}
+				{{match.limit}} Minutes
+				<p>{{match.stage}}</p>
+			{{/text.subhead}}
+		{{/title.text}}
+		{{title.media size="lg" src=match.stageImage alt=match.stage title=match.stage}}
+	{{/card.title}}
+
+		{{#card.content class="layout-row layout-align-space-between"}}
+
+			{{#if playerList}}
+				{{#paper-list}}
+					{{#if match.tied}}
+						{{#unless match.winner}}
+							{{#paper-item}}
+								{{paper-icon 'warning'}}
+								<p>Tied Match!</p>
+							{{/paper-item}}
+						{{/unless}}
+					{{/if}}
+
+					{{#each (reverse (sort-by 'score' match.players)) as |player idx|}}
+						{{#paper-item onClick=(action 'setMatchWinner' match player) class="md-2-line"}}
+							{{#if player.character}}
+								<img src="{{player.smallCharacterImage}}" class="md-avatar" title="{{player.character}}" />
+							{{/if}}
+							<div class="md-list-item-text">
+								<h3>{{player.userDisplayName}}</h3>
+								<p>Score: {{player.score}}</p>
+							</div>
+							{{#if match.tied}}
+								{{#if (eq match.winner.id player.id)}}
+									<div class="md-secondary-container">{{paper-icon 'star'}}</div>
+								{{/if}}
+							{{else}}
+								{{#if (eq idx 0)}}
+									<div class="md-secondary-container">{{paper-icon 'star'}}</div>
+								{{/if}}
+							{{/if}}
+							{{paper-divider}}
+						{{/paper-item}}
+					{{/each}}
+				{{/paper-list}}
+			{{/if}}
+
+			{{yield}}
+
+		{{/card.content}}
+
+	{{#card.actions}}
+		{{#if details}}
+			{{#paper-button onClick=(action 'transition' 'match' match.id)}}
+				View Details
+				{{#paper-tooltip}}View match details{{/paper-tooltip}}
+			{{/paper-button}}
+		{{/if}}
+
+		{{!-- Check to see if this player is already a part of this match --}}
+		{{#if match.players.isFulfilled}}
+			{{#unless (includes (map-by 'userDisplayName' match.players) session.currentUser.displayName) }}
+				{{#paper-button onClick=(action 'joinMatch' match)}}
+					Join
+					{{#paper-tooltip}}Join match{{/paper-tooltip}}
+				{{/paper-button}}
+			{{/unless}}
+		{{/if}}
+
+		{{#if matches}}
+			{{#paper-button warn=true onClick=(action 'deleteMatch' key match)}}
+				Delete
+				{{#paper-tooltip}}Delete match{{/paper-tooltip}}
+			{{/paper-button}}
+		{{/if}}
+
+	{{/card.actions}}
+{{/paper-card}}

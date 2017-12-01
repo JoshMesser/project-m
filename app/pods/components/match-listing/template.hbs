@@ -1,0 +1,26 @@
+{{create-match onCreate=(action 'onCreate')}}
+
+{{#if matches}}
+
+  <ul class="match-listing">
+    {{#each formattedMatches as |matchObj|}}
+      <li>
+        {{#paper-button raised=true primary=true onClick=(action 'toggleMatchVisibility' matchObj.state) }}
+          {{if matchObj.state.hidden 'Show' 'Hide'}} matches on {{output-date matchObj.created}}
+        {{/paper-button}}
+
+        {{#liquid-unless matchObj.state.hidden class="show-matches"}}
+          <div class="layout-row layout-wrap layout-xs-column">
+
+            {{#each matchObj.matches as |match|}}
+              <div class="flex-xs flex-gt-xs-25">
+                {{match-card matches=matches match=match details=true transition=(action 'transition')}}
+              </div>
+            {{/each}}
+          </div>
+        {{/liquid-unless}}
+      </li>
+    {{/each}}
+  </ul>
+
+{{/if}}

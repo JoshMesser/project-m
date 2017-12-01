@@ -1,0 +1,15 @@
+<center>
+	{{#paper-button raised=true onClick=(route-action 'transition' 'index')}}
+		View all matches
+	{{/paper-button}}
+</center>
+
+<div class="layout-column">
+	<div class="flex-auto">
+		{{#match-card match=model details=false playerList=false}}
+			<p>Created: {{output-date model.created}}</p>
+		{{/match-card}}
+	</div>
+</div>
+
+{{player-listing match=model}}

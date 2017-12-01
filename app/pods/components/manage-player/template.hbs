@@ -1,0 +1,69 @@
+{{#paper-form onSubmit=(action 'save') as |form|}}
+  {{#paper-card as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}Manage Player Record{{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+
+    {{#card.content}}
+      <div class="layout-row">
+        <div class="layout-column flex-50">
+          {{form.input type="number" label="Kills" value=player.kills onChange=(action (mut player.kills)) required=true}}
+          {{form.input type="number" label="Deaths" value=player.deaths onChange=(action (mut player.deaths)) required=true}}
+        </div>
+        <div class="layout-column flex-50">
+          <h3>Score: {{player.score}}</h3>
+          <br>
+          <h3>Ratio: {{player.ratio}}</h3>
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-column flex-auto">
+          <h4>Team</h4>
+          {{#paper-radio-group groupValue=(readonly player.team) onChange=(action (mut player.team)) as |group|}}
+            {{#each teamColors as |color|}}
+              <label>
+                {{#group.radio value=color}}
+                  {{color}}
+                {{/group.radio}}
+              </label>
+            {{/each}}
+          {{/paper-radio-group}}
+
+          <h4>Character</h4>
+          {{#paper-radio-group class="character-select" groupValue=(readonly player.character) onChange=(action (mut player.character)) as |group|}}
+            {{#each characters as |char|}}
+              {{#group.radio value=char.name}}
+                <img src="{{char.image}}" />
+                <div>{{char.name}}</div>
+              {{/group.radio}}
+            {{/each}}
+          {{/paper-radio-group}}
+        </div>
+      </div>
+    {{/card.content}}
+
+    {{#card.actions}}
+      {{#paper-button rasied=true warn=true onClick=(action 'leaveMatch' player match)}}
+        Leave
+        {{#paper-tooltip position="top"}}Leave match{{/paper-tooltip}}
+      {{/paper-button}}
+
+      {{#if player.hasDirtyAttributes}}
+        {{#unless player.isNew}}
+          {{#paper-button rasied=true onClick=(action 'rollback' player)}}
+            Undo Changes
+            {{#paper-tooltip position="top"}}Undo changes to your player record{{/paper-tooltip}}
+          {{/paper-button}}
+        {{/unless}}
+
+        {{#form.submit-button raised=true primary=true}}
+          Save
+          {{#paper-tooltip position="top"}}Save player details{{/paper-tooltip}}
+        {{/form.submit-button}}
+      {{/if}}
+    {{/card.actions}}
+  {{/paper-card}}
+
+{{/paper-form}}
