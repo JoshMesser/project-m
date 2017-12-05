@@ -2,10 +2,10 @@
 	{{#card.title as |title|}}
 		{{#title.text as |text|}}
 			{{#text.headline}}
-				{{match.type}} {{match.coop}}
+				{{match.name}}
 			{{/text.headline}}
 			{{#text.subhead}}
-				{{match.limit}} Minutes
+				<p>{{match.type}} {{match.coop}} {{match.limit}} Minutes</p>
 				<p>{{match.stage}}</p>
 			{{/text.subhead}}
 		{{/title.text}}

@@ -19,5 +19,16 @@ export default Ember.Component.extend({
 
       return;
     }
-  })
+  }),
+
+  actions: {
+
+    removePlayer( player ) {
+      const match = this.get('match');
+
+      match.get('players').removeObject( player );
+      match.save();
+    }
+
+  }
 });

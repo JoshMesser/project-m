@@ -10,6 +10,7 @@ export default DS.Model.extend({
   smash: service(),
   stages: computed.alias('smash.stages'),
 
+  name: DS.attr('string', { defaultValue: 'Untitled' }),
   created: DS.attr(),
   type: DS.attr('string'), // stock , timed
   coop: DS.attr('string'), // coop or ffa

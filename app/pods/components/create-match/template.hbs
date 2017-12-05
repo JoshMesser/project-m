@@ -11,6 +11,9 @@
         <div class="layout-column layout-gt-md-row layout-align-center-top">
 
           <div class="layout-column flex-50">
+            {{!-- Match Name --}}
+            {{form.input type="text" label="Match Name (optional)" value=match.name onChange=(action (mut match.name))}}
+
             {{!-- Match Type Selection --}}
             <label>Match Type</label>
             {{#paper-radio-group groupValue=(readonly match.type) onChange=(action (mut match.type)) as |group|}}
@@ -44,17 +47,10 @@
             {{form.input type="number" max="99" min="0" label="Limit" value=match.limit onChange=(action (mut match.limit))}}
 
             {{!-- Stage Selection --}}
-            <label>Match Stage</label>
-
-            {{form.input type="text" label="Stage Filter" value=stageFilter onChange=(action (mut stageFilter))}}
-
-            {{#paper-radio-group groupValue=(readonly match.stage) onChange=(action (mut match.stage)) as |group|}}
-              {{#each (sort-by 'label' filteredStages) as |stage|}}
-                {{#group.radio value=stage.label}}
-                  {{stage.label}}
-                {{/group.radio}}
-              {{/each}}
-            {{/paper-radio-group}}
+            {{#paper-select options=(sort-by 'label' stages) label="Match Stage" selected=(readonly match.stage) onChange=(action (mut match.stage)) as |stage|}}
+              <img src="{{stage.image}}" style="height:30px;" align="left" />
+              <span style="padding-left:25px;">{{stage.label}}</span>
+            {{/paper-select}}
           </div>
         </div>
 

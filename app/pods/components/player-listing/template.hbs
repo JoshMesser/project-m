@@ -3,12 +3,13 @@
     {{#card.title as |title|}}
       {{#title.text as |text|}}
         {{#text.headline}}Player Listing{{/text.headline}}
+        {{#text.subhead}}Click to remove player from match{{/text.subhead}}
       {{/title.text}}
     {{/card.title}}
 
     {{#paper-list}}
       {{#each match.players as |player|}}
-        {{#paper-item class="md-3-line"}}
+        {{#paper-item class="md-3-line" onClick=(action 'removePlayer' player)}}
           <img src="{{player.characterImage}}" class="md-avatar" alt="{{player.character}}" title="{{player.character}}" />
           <div class="md-list-item-text">
             <h3>{{player.userDisplayName}}</h3>
