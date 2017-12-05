@@ -31,15 +31,6 @@ export default Ember.Component.extend({
     {label: 'Co-op'}
   ],
 
-  selectedStageImage: computed('match.stage', {
-    get() {
-      const stage = this.get('match.stage');
-      const stageObj = this.get('stages').findBy('label', stage);
-
-      return stageObj ? get(stageObj, 'image') : undefined;
-    }
-  }),
-
   actions: {
     toggleCreate() {
       this.toggleProperty('create');
@@ -59,6 +50,7 @@ export default Ember.Component.extend({
       const match = this.get('match');
 
       set(match, 'created', new Date().getTime());
+      set(match, 'stage', get(match, 'stage.label'));
 
       store.createRecord('match', match).save()
       .then(match => {

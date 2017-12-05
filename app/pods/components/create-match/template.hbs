@@ -33,14 +33,6 @@
                 {{/group.radio}}
               {{/each}}
             {{/paper-radio-group}}
-
-            {{#if selectedStageImage}}
-              <div>
-                <br>
-                <img src="{{selectedStageImage}}" height="200" />
-                <br>
-              </div>
-            {{/if}}
           </div>
 
           <div class="layout-column flex-50">
@@ -51,6 +43,15 @@
               <img src="{{stage.image}}" style="height:30px;" align="left" />
               <span style="padding-left:25px;">{{stage.label}}</span>
             {{/paper-select}}
+
+            {{#if match.stage.image}}
+              <div>
+                <p>{{match.stage.label}}</p>
+                <br>
+                <img src="{{match.stage.image}}" height="200" />
+                <br>
+              </div>
+            {{/if}}
           </div>
         </div>
 
