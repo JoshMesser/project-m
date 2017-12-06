@@ -1,4 +1,8 @@
+$primary: "blue-grey";
+$accent: "deep-orange";
+
 @import 'ember-paper';
+
 @import 'paper-data-table';
 
 .avatar {
@@ -49,25 +53,37 @@ ul.match-listing {
 	}
 }
 
-.character-select md-radio-button {
-	.md-container {
-		visibility: hidden;
-	}
+.character-select {
+	padding: 1em 0;
+	max-height: 355px;
+	overflow-y: auto;
 
-	.md-label {
-		margin-left: 0;
-		border-radius: 0.5em;
-		padding: 1em;
-		box-shadow: none;
-		transition: box-shadow 0.6s;
-
-		span div {
-			text-align: center;
-			font-weight: bold;
+	md-radio-button {
+		.md-container {
+			visibility: hidden;
 		}
-	}
 
-	&.md-checked .md-label {
-		box-shadow: 0 0 1em rgba(0,0,0,0.5);
+		.md-label {
+			margin-left: 0;
+			border-radius: 0.5em;
+			padding: 1em;
+			box-shadow: none;
+			transition: box-shadow 0.6s;
+
+			span {
+				img {
+					border-radius: 0.5em;
+				}
+
+				div {
+					text-align: center;
+					font-weight: bold;
+				}
+			}
+		}
+
+		&.md-checked .md-label {
+			box-shadow: 0 0 1em rgba(0,0,0,0.5);
+		}
 	}
 }

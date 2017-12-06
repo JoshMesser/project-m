@@ -10,7 +10,7 @@
     {{#paper-list}}
       {{#each match.players as |player|}}
         {{#paper-item class="md-3-line" onClick=(action 'removePlayer' player)}}
-          <img src="{{player.characterImage}}" class="md-avatar" alt="{{player.character}}" title="{{player.character}}" />
+          <img src="{{player.smallCharacterImage}}" class="md-avatar" alt="{{player.character}}" title="{{player.character}}" />
           <div class="md-list-item-text">
             <h3>{{player.userDisplayName}}</h3>
             <h4>Team: {{player.team}} | Score Ratio: {{player.ratio}}</h4>
