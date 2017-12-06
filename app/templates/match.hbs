@@ -1,15 +1,13 @@
-<center>
-	{{#paper-button raised=true onClick=(route-action 'transition' 'index')}}
-		View all matches
-	{{/paper-button}}
-</center>
+{{#paper-button raised=true onClick=(route-action 'transition' 'index')}}
+	View all matches
+{{/paper-button}}
 
-<div class="layout-column">
-	<div class="flex-auto">
-		{{#match-card match=model details=false playerList=false}}
-			<p>Created: {{output-date model.created}}</p>
-		{{/match-card}}
-	</div>
+<img src="{{model.stageImage}}" alt="Match stage image" class="match-cover-image" />
+
+<div class="match-details">
+	{{#match-card match=model details=false playerList=false image=false}}
+		<p>Created: {{output-date model.created}}</p>
+	{{/match-card}}
+
+	{{player-listing match=model}}
 </div>
-
-{{player-listing match=model}}

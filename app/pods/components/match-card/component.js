@@ -8,10 +8,13 @@ const {
 
 export default Ember.Component.extend({
   session: service(),
-	store: service(),
+  store: service(),
+  
+  classNames: ['match-card'],
 
 	details: true,
   playerList: true,
+  image: true,
   
 	actions: {
 

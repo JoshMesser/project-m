@@ -53,6 +53,27 @@ ul.match-listing {
 	}
 }
 
+img.match-cover-image {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+div.match-details {
+	margin-top: 30em;
+	background-color: white;
+	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+	.match-card {
+		min-width: 350px;
+		position: absolute;
+		top: 4.5em;
+		left: 0;
+	}
+}
+
 .character-select {
 	padding: 1em 0;
 	max-height: 355px;
