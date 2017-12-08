@@ -2,9 +2,7 @@
 	View all matches
 {{/paper-button}}
 
-<img src="{{model.stageImage}}" alt="Match stage image" class="match-cover-image" />
-
-<div class="match-details">
+<div class="match-details" style="background-image: url({{model.stageImage}})">
 	{{#match-card match=model details=false playerList=false image=false}}
 		<p>Created: {{output-date model.created}}</p>
 	{{/match-card}}
